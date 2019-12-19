@@ -1,20 +1,28 @@
 const models = require('../models')
 const Categories = models.categories
-// const Users = models.users
+const Articles = models.articles
 
 exports.index = (req, res) => {
-    Categories.findAll(
-    //     {
-    //     include: [{
-    //         model: User,
-    //         as: "createdBy"
-    //     }]
-    // }
+    Categories.findAll( 
     ).then(categories=>res.send(categories))
 }
 
+
 exports.show = (req, res) => {
-    Categories.findOne({where: {id: req.params.id}}).then(categories=> res.send(categories))
+    Categories.findOne(
+        {where: {id: req.params.id},
+        include: [ 
+            {model:Articles, as:'category'}
+        ]
+    }).then(articles=> res.send(articles))
+}
+
+
+exports.showArticle =(req, res) => {
+    Categories.findOne({where:{id:req.params.id},
+        include: [ 
+            {model:Articles, as:'category'}
+        ]}).then(articles=>res.send(articles))
 }
 
 exports.store = (req, res) => {

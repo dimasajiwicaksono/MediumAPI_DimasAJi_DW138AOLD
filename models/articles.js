@@ -13,6 +13,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   articles.associate = function(models) {
     // associations can be defined here
-  };
+
+    // hasOne or hasMany foreignKey to target
+    // belongsTo foreignKey to source
+
+    articles.belongsTo(models.categories, 
+      {as:'category', foreignKey:'category_id'},
+    articles.belongsTo (models.users,
+      {as:'createdBy', foreignKey:'author_id'},
+    articles.hasMany (models.comment,
+        {as:'comments', foreignKey:'article_id'})))
+  };  
   return articles;
 };
