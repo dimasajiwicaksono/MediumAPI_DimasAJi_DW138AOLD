@@ -1,49 +1,53 @@
 const models = require('../models')
-const Articles = models.articles
+const User = models.users
+const Articles = models.article
+const Comment = models.comments
 const Categories = models.categories
 
 
+
 exports.index = (req, res) => {
-    Articles.findAll(
-        {
-            include: [{
-            model: Categories,
-            as: "categoryId",
-        }]
-    }
-    ).then(articles=>res.send(articles))
+    User.findAll()
+    .then(User=>res.send(User))
 }
 
 exports.show = (req, res) => {
-    Articles.findOne({where: {id: req.params.id}}).then(articles=> res.send(articles))
+    User.findOne({
+                where: { id: req.params.id },
+                // include : [
+                //     {model: Articles,
+                //     as : "createdBy"
+                // }
+                // ]
+    }).then(User=> res.send(User))
 }
 
 exports.store = (req, res) => {
-    Articles.create(req.body).then(Users=> {
+    User.create(req.body).then(User=> {
         res.send({
             message: "success",
-            Users
+            User
         })
     })
 }
 
 exports.update = (req, res) => {
-    Users.update(
+    User.update(
         req.body,
         {where: {id: req.params.id}}
-    ).then(Users=> {
+    ).then(User=> {
         res.send({
             message: "success",
-            Users
+            User
         })
     })
 }
 
 exports.delete = (req, res) => {
-    Users.destroy({where: {id: req.params.id}}).then(Users=> {
+    User.destroy({where: {id: req.params.id}}).then(User=> {
         res.send({
             message: "success",
-            Users
+            User
         })
     })
 }

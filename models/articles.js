@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     articles.belongsTo(models.categories, 
       {as:'category', foreignKey:'category_id'},
     articles.belongsTo (models.users,
-      {as:'createdBy', foreignKey:'author_id'},
+      {as:'', foreignKey:'author_id'},
     articles.hasMany (models.comment,
         {as:'comments', foreignKey:'article_id'})))
   };  
