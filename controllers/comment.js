@@ -4,7 +4,9 @@ const Comment = models.comment
 
 
 exports.index = (req, res) => {
-    Comment.findAll()
+    Comment.findAll(
+        
+    )
     .then(Comment=>res.send(Comment))
 }
 
