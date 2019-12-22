@@ -45,12 +45,12 @@ app.group("/api/v1", (router) => {
     router.get('/article_detail', articleController.articleDetail);
     router.get('/articles', articleController.index);  
     router.get('/article/:id' , articleController.show);    
-    router.post('/article', authenticated,articleController.store);
-    router.delete('/article/:id', articleController.delete);    
+    router.post('/article', authenticated, articleController.store);
+    router.patch('/article/:id', authenticated, articleController.update) ;  
+    router.delete('/article/:id', authenticated, articleController.delete);    
 
     //get update article
-    router.patch('/article/:id', articleController.update) ;  
-
+    
     // get popular a
     router.get('/article_popular', articleController.popularDesc)  ;
 
@@ -68,7 +68,7 @@ app.group("/api/v1", (router) => {
     // router.get('user/:id/articles', userController.show)
     router.get('/users', userController.index);
     router.get('/user/:id', userController.show);    
-    router.post('/user/:id', userController.store);    
+    router.post('/user', userController.store);    
     router.patch('/user/:id', userController.update);    
     router.delete('/user/:id', userController.delete);
 

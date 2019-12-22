@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   users.associate = function(models) {
     // associations can be defined here
     users.hasMany (models.articles, 
-      {as:'createdBy', foreignKey:'author_id'})
+      {as:'createdBy', foreignKey:'id'})
     // users.belongsTo (models.follow, 
     //   {as:'user', foreignKey:'user_id'})
   };

@@ -24,8 +24,7 @@ exports.index = (req, res) => {
 exports.store = (req, res) => {
     Follow.create(req.body).then(Follow => {
         res.send({
-            message: "success",
-            Follow
+                Follow
         })
     })
 }

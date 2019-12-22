@@ -57,17 +57,14 @@ exports.show = (req, res) => {
     }).then(articles => res.send(articles))
 }
 
-exports.store = (req, res) => {
+exports.store = (req, res ) => {
     Articles.create(
-        req.body, {})
-        .then(articles => {
-            res.send({
-                message: "success",
-                articles
+        req.body
+        ).then(articles => {
+            res.send({ articles
             })
-        })
+        }).catch (err => res.send(err))
 }
-
 
 exports.update = (req, res) => {
     Articles.update(
