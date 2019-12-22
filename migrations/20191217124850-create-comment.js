@@ -15,10 +15,22 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       article_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references : {
+          model:'articles',
+          key:'id'
+        },
+        onUpdate:'cascade',
+        onDelete:'cascade'
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references : {
+          model:'users',
+          key:'id'
+        },
+        onUpdate:'cascade',
+        onDelete:'cascade'
       },
       comment: {
         type: Sequelize.TEXT

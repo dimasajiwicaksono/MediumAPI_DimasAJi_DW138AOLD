@@ -18,7 +18,14 @@ module.exports = {
         type: Sequelize.STRING
       },
       category_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull : false,
+        references : {
+          model:'categories',
+          key:'id'
+        },
+        onUpdate:'cascade',
+        onDelete:'cascade'
       },
       category_name: {
         type: Sequelize.STRING
