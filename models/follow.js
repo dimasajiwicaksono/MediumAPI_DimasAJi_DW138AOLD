@@ -1,4 +1,7 @@
+/*jshint esversion:6*/
+
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const follow = sequelize.define('follow', {
     user_id: DataTypes.INTEGER,
