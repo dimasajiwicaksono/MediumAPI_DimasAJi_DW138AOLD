@@ -59,7 +59,7 @@ exports.show = (req, res) => {
 
 exports.store = (req, res ) => {
     Articles.create(
-        req.body
+        title = req.body.title
         ).then(articles => {
             res.send({ articles
             })

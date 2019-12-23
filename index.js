@@ -22,6 +22,10 @@ const followController = require('./controllers/follow');
 
 // middleware
 const {authenticated} = require ('./middleware');
+app.get('/', (req, res) => {
+    //res means, response, and it send string "Hello Express!" to the API
+    res.send('Hello Express!')
+})    
 
 app.group("/api/v1", (router) => {
 
